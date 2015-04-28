@@ -47,6 +47,36 @@ class DataObject : public QObject
 
 };
 
+class SupplierData : public QObject
+{
+    Q_OBJECT
+    public:
+        struct Supplier
+        {
+            QString Name;
+            QString Prefix;
+            QString TableName;
+            bool FixedFile;
+            int AgreementProduct[2];
+            int AgreementItem[2];
+            int AgreementTitle[2];
+            int AgreementDiscount[2];
+            int AgreementItemDiscount[2];
+
+            int PricelistItem[2];
+            int PricelistTitle[2];
+            int PricelistProduct[2];
+            int PricelistUnit[2];
+            int PricelistListprice[2];
+            int PricelistPrice[2];
+        };
+
+        SupplierData();
+    private:
+        Supplier Data;
+        QSqlDatabase *SqlDb;
+};
+
 class DatabaseManager : public QObject
 {
     Q_OBJECT
