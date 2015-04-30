@@ -33,12 +33,12 @@ class DataObject : public QObject
             double Price[6];
         };
 
-        DataObject(QString name, QString pre);
+        DataObject(QSqlDatabase *db, QString name, QString pre);
         bool PutAgreementItem(Agreement *a);
         bool PutPricelistItem(Pricelist *p);
         bool CreateTables();
-        void GetAgreementList(QLinkedList<Agreement> *list);
-        void GetAgreementItem(Agreement *a, QString product);
+        bool GetAgreementList(QLinkedList<Agreement> *list);
+        bool GetAgreementItem(Agreement *a, QString product);
 
     private:
         QString DbName;
@@ -68,10 +68,13 @@ class SupplierData : public QObject
             int PricelistProduct[2];
             int PricelistUnit[2];
             int PricelistListprice[2];
-            int PricelistPrice[2];
         };
 
-        SupplierData();
+        SupplierData(QSqlDatabase *db);
+        bool PutSupplierItem(Supplier *s);
+        bool CreateTables();
+        bool GetSupplierList(QLinkedList<SupplierData::Supplier> *list);
+
     private:
         Supplier Data;
         QSqlDatabase *SqlDb;

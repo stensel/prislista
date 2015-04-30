@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>590</width>
-    <height>484</height>
+    <width>570</width>
+    <height>355</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>240</y>
+     <x>210</x>
+     <y>310</y>
      <width>341</width>
      <height>32</height>
     </rect>
@@ -29,13 +29,13 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
      <width>471</width>
-     <height>141</height>
+     <height>51</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -61,12 +61,243 @@
     </item>
    </layout>
   </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>541</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Inställningar för avtal/pris filerna från leverantören</string>
+   </property>
+   <widget class="QGroupBox" name="AgreementGP">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>251</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Avtalsfil</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>231</width>
+       <height>145</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Benämning</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QSpinBox" name="A_Product2"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Artikelnr</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="A_Title1"/>
+      </item>
+      <item row="3" column="3">
+       <widget class="QSpinBox" name="A_Title2"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QSpinBox" name="A_Discount1"/>
+      </item>
+      <item row="4" column="3">
+       <widget class="QSpinBox" name="A_Discount2"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QSpinBox" name="A_ItemDiscount1"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Artikel Rabatt</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Rabatt</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="3">
+       <widget class="QSpinBox" name="A_ItemDiscount2"/>
+      </item>
+      <item row="2" column="3">
+       <widget class="QSpinBox" name="A_Item2"/>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="A_Item1"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="A_Product1"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Produktgrupp</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="A_C1L">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QLabel" name="A_C2L">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="PricelistGP">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>40</y>
+      <width>261</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Prislista</string>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>231</width>
+       <height>145</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="3" column="2">
+       <widget class="QSpinBox" name="P_Product2"/>
+      </item>
+      <item row="1" column="2">
+       <widget class="QSpinBox" name="P_Item2"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Produktgrupp</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="P_Product1"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_11">
+        <property name="text">
+         <string>Enhet</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="P_Title1"/>
+      </item>
+      <item row="5" column="1">
+       <widget class="QSpinBox" name="P_Listprice1"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSpinBox" name="P_Item1"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Benämning</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Artikelnr</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2">
+       <widget class="QSpinBox" name="P_Listprice2"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QSpinBox" name="P_Title2"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QSpinBox" name="P_Uni1"/>
+      </item>
+      <item row="4" column="2">
+       <widget class="QSpinBox" name="P_Unit2"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>Listpris</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLabel" name="P_C1L">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="P_C2L">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QCheckBox" name="AgreementFixed">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>70</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Fixed</string>
+    </property>
+   </widget>
+  </widget>
+  <zorder>layoutWidget</zorder>
   <zorder>buttonBox</zorder>
-  <zorder>SupplierName</zorder>
-  <zorder>Prefix</zorder>
-  <zorder>label_2</zorder>
-  <zorder>SupplierName</zorder>
-  <zorder>label</zorder>
+  <zorder>groupBox</zorder>
  </widget>
  <resources/>
  <connections>

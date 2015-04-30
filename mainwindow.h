@@ -28,6 +28,14 @@ private:
         Ui::MainWindow *ui;
 
         DatabaseManager *dbm;
+        SupplierData *sd;
+        QLinkedList<SupplierData::Supplier> supList;
+
+        DataObject *data;
+        QLinkedList<DataObject::Agreement> agList;
+        QLinkedList<DataObject::Pricelist> plList;
+
+        QStringListModel *model;
 };
 
 #endif // MAINWINDOW_H
