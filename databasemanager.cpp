@@ -24,12 +24,16 @@ bool DataObject::CreateTables()
         qtbl += "Product TEXT, Item TEXT, Title TEXT, Discount DOUBLE, ItemDiscount DOUBLE)";
 
         ret = query.exec(qtbl);
+        qDebug() << qtbl;
+        qDebug() << query.lastError().text();
 
         qtbl = "CREATE TABLE IF NOT EXISTS tbl_" + DbName + "_Pricelist ";
         qtbl += "(Id INTEGER PRIMARY KEY, ";
         qtbl += "Item TEXT, Title TEXT, Product TEXT, Unit TEXT, Listprice DOUBLE, Price1 DOUBLE, Price2 DOUBLE, Price3 DOUBLE, Price4 DOUBLE, Price5 DOUBLE, Price6 DOUBLE)";
 
         ret = query.exec(qtbl);
+        qDebug() << qtbl;
+        qDebug() << query.lastError().text();
     }
 
     return ret;
@@ -153,28 +157,30 @@ SupplierData::SupplierData(QSqlDatabase *db)
 
 bool SupplierData::CreateTables()
 {
-    QString qtbl;
+    QString qstr;
     bool ret = false;
 
     if (SqlDb->isOpen())
     {
         QSqlQuery query;
 
-        qtbl = "CREATE TABLE IF NOT EXISTS tbl_Suppliers ";
-        qtbl += "(Id INTEGER PRIMARY KEY, ";
-        qtbl += "Name TEXT, Prefix TEXT, ";
-        qtbl += "Ag_Product1 INT, Ag_Product2 INT, ";
-        qtbl += "Ag_Item1 INT, Ag_Item2 INT, ";
-        qtbl += "Ag_Title1 INT, Ag_Title2 INT, ";
-        qtbl += "Ag_Discount1 INT, Ag_Discount2 INT, ";
-        qtbl += "Ag_ItemDiscount1 INT, Ag_ItemDiscount2 INT, ";
-        qtbl += "Pl_Item1 INT, Pl_Item2 INT, ";
-        qtbl += "Pl_Title1 INT, Pl_Title2 INT, ";
-        qtbl += "Pl_Product1 INT, Pl_Product2 INT, ";
-        qtbl += "Pl_Unit1 INT, Pl_Unit2 INT, ";
-        qtbl += "Pl_Listprice1 INT, Pl_Listprice2 INT)";
+        qstr = "CREATE TABLE IF NOT EXISTS tbl_Suppliers ";
+        qstr += "(Id INTEGER PRIMARY KEY, ";
+        qstr += "Name TEXT, Prefix TEXT, ";
+        qstr += "Ag_Product1 INT, Ag_Product2 INT, ";
+        qstr += "Ag_Item1 INT, Ag_Item2 INT, ";
+        qstr += "Ag_Title1 INT, Ag_Title2 INT, ";
+        qstr += "Ag_Discount1 INT, Ag_Discount2 INT, ";
+        qstr += "Ag_ItemDiscount1 INT, Ag_ItemDiscount2 INT, ";
+        qstr += "Pl_Item1 INT, Pl_Item2 INT, ";
+        qstr += "Pl_Title1 INT, Pl_Title2 INT, ";
+        qstr += "Pl_Product1 INT, Pl_Product2 INT, ";
+        qstr += "Pl_Unit1 INT, Pl_Unit2 INT, ";
+        qstr += "Pl_Listprice1 INT, Pl_Listprice2 INT)";
 
-        ret = query.exec(qtbl);
+        ret = query.exec(qstr);
+        qDebug() << qstr;
+        qDebug() << query.lastError().text();
     }
 
     return ret;
@@ -263,6 +269,7 @@ bool SupplierData::GetSupplierList(QLinkedList<Supplier> *list)
 
 DatabaseManager::DatabaseManager()
 {
+
     db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("localhost");
     db.setDatabaseName("Prices");
@@ -272,7 +279,7 @@ DatabaseManager::DatabaseManager()
     if(db.open())
     {
         qDebug() << db.lastError();
-        qFatal( "Failed to connect." );
+        qFatal("Failed to connect.");
     }
 }
 
