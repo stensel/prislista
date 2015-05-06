@@ -6,6 +6,7 @@ SupplierDialog::SupplierDialog(QWidget *parent) :
     ui(new Ui::SupplierDialog)
 {
     ui->setupUi(this);
+    on_AgreementFixed_clicked();
 }
 
 SupplierDialog::~SupplierDialog()
@@ -15,7 +16,7 @@ SupplierDialog::~SupplierDialog()
 
 void SupplierDialog::on_AgreementFixed_clicked()
 {
-    if (ui->AgreementFixed->isChecked())
+    if (!ui->AgreementFixed->isChecked())
     {
         ui->A_C1L->setText("Start");
         ui->A_C2L->setText("Längd");

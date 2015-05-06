@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "databasemanager.h"
+#include "supplierdialog.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,26 +10,34 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     dbm = new DatabaseManager();
+    dbm->OpenDBSQLite("Pricelist", "Pricelist", "exit");
+
     sd = new SupplierData(dbm->GetDb());
+    sd->CreateTables();
     sd->GetSupplierList(&supList);
 
     // Create model
     model = new QStringListModel(this);
 
-    // Make data
-    QStringList List;
-    List << "Clair de Lune" << "Reverie" << "Prelude";
+    ReadDB();
 
-    foreach (SupplierData::Supplier s, supList)
+    // Glue model and view together
+    ui->SuppliersLv->setModel(model);
+}
+
+void MainWindow::ReadDB(void)
+{
+    QStringList List;
+
+    sd->GetSupplierList(&supList);
+
+    foreach (SupplierData::Supplier sup, supList)
     {
-        List << s.Name;
+        List << sup.Name;
     }
 
     // Populate our model
     model->setStringList(List);
-
-    // Glue model and view together
-    ui->SuppliersLv->setModel(model);
 }
 
 MainWindow::~MainWindow()
@@ -39,7 +48,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_CreatePb_clicked()
 {
+    SupplierDialog *sdi;
+    SupplierData::Supplier sup;
+    sdi = new SupplierDialog(this);
+    sdi->setModal(true);
+    sdi->show();
+    sdi->GetData(&sup);
 
+    sd->PutSupplierItem(&sup);
 }
 
 void MainWindow::on_ReadAgreementPb_clicked()

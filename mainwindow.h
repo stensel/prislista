@@ -36,6 +36,8 @@ private:
         QLinkedList<DataObject::Pricelist> plList;
 
         QStringListModel *model;
+
+        void ReadDB(void);
 };
 
 #endif // MAINWINDOW_H

@@ -269,18 +269,50 @@ bool SupplierData::GetSupplierList(QLinkedList<Supplier> *list)
 
 DatabaseManager::DatabaseManager()
 {
+}
 
+QSqlError DatabaseManager::OpenDBMYSQL(QString dbName, QString User, QString Password, QString Host)
+{
     db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("Prices");
-    db.setUserName("Prices");
-    db.setPassword("exit");
+    db.setHostName(Host);
+    db.setDatabaseName(dbName);
+    db.setUserName(User);
+    db.setPassword(Password);
 
-    if(db.open())
+    if(!db.open())
     {
         qDebug() << db.lastError();
         qFatal("Failed to connect.");
     }
+
+    return db.lastError();
+}
+
+QSqlError DatabaseManager::OpenDBSQLite(QString dbName, QString User, QString Password)
+{
+    // Find QSLite driver
+    db = QSqlDatabase::addDatabase("QSQLITE");
+
+//    #ifdef Q_OS_LINUX
+    // NOTE: We have to store database file into user home folder in Linux
+    QString path(QDir::home().path());
+    path.append(QDir::separator()).append(dbName + ".db");
+    path = QDir::toNativeSeparators(path);
+    db.setDatabaseName(path);
+
+    qDebug() << path;
+    //    #else
+    // NOTE: File exists in the application private folder, in Symbian Qt implementation
+//    db.setDatabaseName(File);
+//    #endif
+
+    if(!db.open())
+    {
+        qDebug() << db.lastError().text();
+        qFatal("Failed to connect.");
+    }
+
+    return db.lastError();
 }
 
 DatabaseManager::~DatabaseManager()

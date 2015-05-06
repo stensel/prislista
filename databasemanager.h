@@ -87,6 +87,8 @@ class DatabaseManager : public QObject
         DatabaseManager();
         ~DatabaseManager();
 
+        QSqlError OpenDBSQLite(QString dbName, QString User, QString Password);
+        QSqlError OpenDBMYSQL(QString dbName, QString User, QString Password, QString Host);
         QSqlError lastError();
         QSqlDatabase *GetDb();
     private:
